@@ -1,0 +1,105 @@
+version: "2.0"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - chitchat
+slots:
+  employe_id:
+    type: text  
+  hr_portal:
+    type: text
+  hr_discuss:
+    type: categorical
+    values:
+       - Schedule a HR Discussion
+       - Select the dates     
+  request:
+    
+    type: categorical
+    values:
+        - Leave Request
+        - Select the type of leave
+        - Sick Leaves
+        - Select the dates
+  notification:
+    type: bool
+    influence_conversation: false      
+responses:
+  utter_greet:
+  - text: Hi 👋there, welcome🙏🏻 to Smatbotn
+  utter_chitchat/ask_policies:
+  
+  - text: Select the policy that you want to read about  
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+  utter_ask_employe_id:
+  - text: "Please enter your Employee ID"
+  utter_ask_ pay_slip:
+  - text: "Welcome to HR Portal. 😊
+  
+  
+
+
+
+What would you like to do?👇"
+
+  utter_ask_ hr_portal:
+  - text: "Which month's Pay Slip would you like to see?" 
+  utter_ask_notification:
+    - text: Do you have any other concerns?
+  
+forms:
+  hr_form:
+    required_slots:
+      employe_id:
+      - type: from_text
+      hr_portal:
+      - type: from_text
+      pay_slip: 
+      - type: from_text 
+  #request_form:
+  #  required_slots:
+     # employe_id:
+    #  - type: from_text
+    #  rquest:
+   #   - type: from_text
+  #    notification:
+   #   - type: from_text
+    #    intent:
+     #     - affirm
+      #    - deny 
+ # main_form:
+    #required_slots:
+     # employe_id:
+    #  - type: from_text
+    #  notification:
+    #  - type: from_text
+    #    intent:
+    #      - affirm
+     #     - deny
+
+
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
